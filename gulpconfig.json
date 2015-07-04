@@ -3,7 +3,7 @@
   "sourceDir": "src",
   "buildDir": "dist",
   "index": "src/index.html",
-  "script": "src/scripts/app.js",
+  "script": "src/scripts/app.jsx",
   "style": "src/styles/app.less",
   "misc": [
     "src/images/**/*.{ico,gif,jpg,png}"

@@ -30,7 +30,7 @@ if (env) {
 }
 
 gulp.task("build-scripts", () => {
-  return browserify(`./${config.script}`)
+  return browserify({ entries: `./${config.script}`, extensions: [".jsx"] })
     .transform(babelify)
     .bundle()
     .on("error", function(err) {
