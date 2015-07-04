@@ -18,6 +18,17 @@
       color: inherit;
       font-size: 1.75em;
     }
+
+    .quote-enter {
+      opacity: 0;
+      transition: opacity .5s ease-in;
+      -webkit-transition: opacity .5s ease-in;
+      -moz-transition: opacity .5s ease-in;
+
+      &.quote-enter-active {
+        opacity: 1;
+      }
+    }
   }
 
   img {

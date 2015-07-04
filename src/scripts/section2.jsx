@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react/addons";
+
+const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 export class Section2 extends React.Component {
   static QUOTES = [{
@@ -18,7 +20,7 @@ export class Section2 extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { quoteIndex: 0 };
+    this.state = { quoteIndex: 0, quoteChangeEnabled: true };
   }
 
   render() {
@@ -98,16 +100,20 @@ export class Section2 extends React.Component {
             <div className="heading">WORDS OF <b>WISDOM.</b></div>
             <div className="pure-g">
               <div className="pure-u-1 pure-u-md-4-24">
-                <p><a href="" onClick={this.handlePreviousQuote.bind(this)}>&lt;</a></p>
+                <p><a href="" onClick={this.handleQuoteChange.bind(this, "previous")}>&lt;</a></p>
               </div>
 
               <div className="pure-u-1 pure-u-md-16-24">
-                <p>{Section2.QUOTES[this.state.quoteIndex].text}</p>
-                <p>{Section2.QUOTES[this.state.quoteIndex].credit}</p>
+                <ReactCSSTransitionGroup transitionName="quote" transitionLeave={false}>
+                  <div key={this.state.quoteIndex}>
+                    <p>{Section2.QUOTES[this.state.quoteIndex].text}</p>
+                    <p>{Section2.QUOTES[this.state.quoteIndex].credit}</p>
+                  </div>
+                </ReactCSSTransitionGroup>
               </div>
 
               <div className="pure-u-1 pure-u-md-4-24">
-                <p><a href="" onClick={this.handleNextQuote.bind(this)}>&gt;</a></p>
+                <p><a href="" onClick={this.handleQuoteChange.bind(this, "next")}>&gt;</a></p>
               </div>
             </div>
           </div>
@@ -119,17 +125,27 @@ export class Section2 extends React.Component {
     );
   }
 
-  handlePreviousQuote(evt) {
-    evt.preventDefault(); // Don't follow link.
-
-    let quoteIndex = this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Section2.QUOTES.length - 1;
-    this.setState({ quoteIndex });
+  componentDidUpdate(prevProps, prevState) {
+    if (!this.state.quoteChangeEnabled) {
+      // Let the quote's "fade-in" CSS animation complete first.
+      setTimeout(() => this.setState({ quoteChangeEnabled: true }), 500);
+    }
   }
 
-  handleNextQuote(evt) {
+  handleQuoteChange(type, evt) {
     evt.preventDefault(); // Don't follow link.
 
-    let quoteIndex = this.state.quoteIndex < Section2.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
-    this.setState({ quoteIndex });
+    if (!this.state.quoteChangeEnabled) {
+      return;
+    }
+
+    let quoteIndex = (() => {
+      switch (type) {
+        case "previous": return this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Section2.QUOTES.length - 1;
+        case "next": return this.state.quoteIndex < Section2.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
+      }
+    })();
+
+    this.setState({ quoteIndex, quoteChangeEnabled: false });
   }
 }

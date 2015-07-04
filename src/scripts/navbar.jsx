@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react/addons";
 
 export class Navbar extends React.Component {
   render() {

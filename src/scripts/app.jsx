@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react/addons";
 import {Navbar} from "./navbar";
 import {Section1} from "./section1";
 import {Section2} from "./section2";

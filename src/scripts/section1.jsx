@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react/addons";
 
 export class Section1 extends React.Component {
   render() {
