@@ -6,7 +6,7 @@ export class Section1 extends React.Component {
       <div id="section1">
         <div className="brand">
           <div className="brand-name">
-            design<b>maven.</b>
+            design<span className="emphasised">maven.</span>
           </div>
           <div className="brand-description">
             MELBOURNE-BASED GRAPHIC DESIGNER

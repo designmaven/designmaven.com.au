@@ -31,7 +31,7 @@ if (env) {
 
 gulp.task("build-scripts", () => {
   return browserify({ entries: `./${config.script}`, extensions: [".jsx"] })
-    .transform(babelify)
+    .transform(babelify.configure({ optional: ["es7.classProperties"] }))
     .bundle()
     .on("error", function(err) {
       gutil.log(gutil.colors.red(err.message));

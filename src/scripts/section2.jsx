@@ -1,6 +1,26 @@
 import React from "react";
 
 export class Section2 extends React.Component {
+  static QUOTES = [{
+    text: "Creativity is intelligence having fun.",
+    credit: "Albert Einstein"
+  }, {
+    text: "Make it simple. But significant.",
+    credit: "Don Draper"
+  }, {
+    text: "Good design is as little design as possible.",
+    credit: "Dieter Rams"
+  }, {
+    text: "The first draft of anything is shit.",
+    credit: "Ernest Hemingway"
+  }]
+
+  constructor(props) {
+    super(props);
+
+    this.state = { quoteIndex: 0 };
+  }
+
   render() {
     return (
       <div id="section2">
@@ -71,25 +91,45 @@ export class Section2 extends React.Component {
         </div>
 
         <div className="pure-g">
-          <div className="pure-u-1 pure-u-md-8-24">
+          <div className="pure-u-1 pure-u-md-4-24">
           </div>
 
-          <div className="pure-u-1 pure-u-md-8-24 quotes-carousel">
+          <div className="pure-u-1 pure-u-md-16-24 quotes">
             <div className="heading">WORDS OF <b>WISDOM.</b></div>
-            <p>Creativity is intelligence having fun.</p>
-            <p>Albert Einstein</p>
-            <p>Make it simple. But significant.</p>
-            <p>Don Draper</p>
-            <p>Good design is as little design as possible.</p>
-            <p>Dieter Rams</p>
-            <p>The first draft of anything is shit.</p>
-            <p>Ernest Hemingway</p>
+            <div className="pure-g">
+              <div className="pure-u-1 pure-u-md-4-24">
+                <p><a href="" onClick={this.handlePreviousQuote.bind(this)}>&lt;</a></p>
+              </div>
+
+              <div className="pure-u-1 pure-u-md-16-24">
+                <p>{Section2.QUOTES[this.state.quoteIndex].text}</p>
+                <p>{Section2.QUOTES[this.state.quoteIndex].credit}</p>
+              </div>
+
+              <div className="pure-u-1 pure-u-md-4-24">
+                <p><a href="" onClick={this.handleNextQuote.bind(this)}>&gt;</a></p>
+              </div>
+            </div>
           </div>
 
-          <div className="pure-u-1 pure-u-md-8-24">
+          <div className="pure-u-1 pure-u-md-4-24">
           </div>
         </div>
       </div>
     );
+  }
+
+  handlePreviousQuote(evt) {
+    evt.preventDefault(); // Don't follow link.
+
+    let quoteIndex = this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Section2.QUOTES.length - 1;
+    this.setState({ quoteIndex });
+  }
+
+  handleNextQuote(evt) {
+    evt.preventDefault(); // Don't follow link.
+
+    let quoteIndex = this.state.quoteIndex < Section2.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
+    this.setState({ quoteIndex });
   }
 }
