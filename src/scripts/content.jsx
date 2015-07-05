@@ -49,13 +49,13 @@ export class Content extends React.Component {
           <div className="pure-u-1 pure-u-md-14-24">
             <div className="heading">YES TO ALL <b>CAPABILITIES.</b></div>
             <div className="pure-g">
-              <div className="pure-u-1 pure-u-md-1-3">
+              <div className="pure-u-1 pure-u-sm-1-3">
                 <img src="images/pen-tool.png" className="vector" />
               </div>
-              <div className="pure-u-1 pure-u-md-1-3">
+              <div className="pure-u-1 pure-u-sm-1-3">
                 <img src="images/swatch.png" className="vector" />
               </div>
-              <div className="pure-u-1 pure-u-md-1-3">
+              <div className="pure-u-1 pure-u-sm-1-3">
                 <img src="images/pencil.png" className="vector" />
               </div>
             </div>
@@ -76,10 +76,10 @@ export class Content extends React.Component {
             <div className="pure-u-1">
               <div className="heading">COFFEE <b>LOVER.</b></div>
               <div className="pure-g">
-                <div className="pure-u-1 pure-u-md-1-2">
+                <div className="pure-u-1 pure-u-sm-1-2">
                   <img src="images/coffee1.png" className="vector" />
                 </div>
-                <div className="pure-u-1 pure-u-md-1-2">
+                <div className="pure-u-1 pure-u-sm-1-2">
                   <img src="images/coffee2.png" className="vector" />
                 </div>
               </div>
