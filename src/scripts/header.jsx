@@ -1,9 +1,9 @@
 import React from "react/addons";
 
-export class Section1 extends React.Component {
+export class Header extends React.Component {
   render() {
     return (
-      <div id="section1">
+      <div id="header">
         <div className="brand">
           <div className="brand-name">
             design<span className="emphasised">maven.</span>

@@ -1,15 +1,15 @@
 import React from "react/addons";
 import {Navbar} from "./navbar";
-import {Section1} from "./section1";
-import {Section2} from "./section2";
+import {Header} from "./header";
+import {Content} from "./content";
 
 class App extends React.Component {
   render() {
     return (
       <div id="app">
         <Navbar />
-        <Section1 />
-        <Section2 />
+        <Header />
+        <Content />
       </div>
     );
   }

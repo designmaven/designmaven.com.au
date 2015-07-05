@@ -2,7 +2,7 @@ import React from "react/addons";
 
 const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-export class Section2 extends React.Component {
+export class Content extends React.Component {
   static QUOTES = [{
     text: "Creativity is intelligence having fun.",
     credit: "Albert Einstein"
@@ -25,7 +25,7 @@ export class Section2 extends React.Component {
 
   render() {
     return (
-      <div id="section2">
+      <div id="content">
         <div className="pure-g">
           <div className="pure-u-1 pure-u-md-16-24">
             <div className="heading">ABOUT <b>ME.</b></div>
@@ -106,8 +106,8 @@ export class Section2 extends React.Component {
               <div className="pure-u-1 pure-u-md-16-24">
                 <ReactCSSTransitionGroup transitionName="quote" transitionLeave={false}>
                   <div key={this.state.quoteIndex}>
-                    <p>{Section2.QUOTES[this.state.quoteIndex].text}</p>
-                    <p>{Section2.QUOTES[this.state.quoteIndex].credit}</p>
+                    <p>{Content.QUOTES[this.state.quoteIndex].text}</p>
+                    <p>{Content.QUOTES[this.state.quoteIndex].credit}</p>
                   </div>
                 </ReactCSSTransitionGroup>
               </div>
@@ -141,8 +141,8 @@ export class Section2 extends React.Component {
 
     let quoteIndex = (() => {
       switch (type) {
-        case "previous": return this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Section2.QUOTES.length - 1;
-        case "next": return this.state.quoteIndex < Section2.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
+        case "previous": return this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Content.QUOTES.length - 1;
+        case "next": return this.state.quoteIndex < Content.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
       }
     })();
 
