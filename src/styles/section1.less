@@ -1,26 +1,20 @@
 #section1 {
-  height: 100%;
-  width: 100%;
+  position: relative;
   display: block;
-  background-image: url("../images/sarah2.jpg");
+  height: auto;
+  width: auto;
+  background: url("../images/sarah2.jpg") no-repeat center center;
+  background-attachment: scroll;
   background-size: cover;
-  background-position: center center;
+  padding: 100px 0;
 
   .brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    margin: auto;
-    text-align: center;
+    position: relative;
     color: white;
+    text-align: center;
 
     .brand-name {
-      font-size: 80px;
+      font-size: 55px;
       font-weight: 300;
 
       .emphasised {
@@ -29,13 +23,13 @@
     }
 
     .brand-description {
-      font-size: 30px;
-      margin-top: 30px;
+      font-size: 20px;
+      margin-top: 20px;
     }
 
     .brand-contact {
-      font-size: 20px;
-      margin-top: 50px;
+      font-size: 14px;
+      margin-top: 40px;
 
       a {
         color: white;
@@ -50,6 +44,60 @@
           color: rgba(255, 255, 255, 0.7);
           border-color: rgba(255, 255, 255, 0.7);
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 48em) { // Same media query for Pure's "md" grid.
+  #section1 {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+
+    .brand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      margin: auto;
+
+      .brand-name {
+        font-size: 70px;
+      }
+
+      .brand-description {
+        font-size: 25px;
+        margin-top: 30px;
+      }
+
+      .brand-contact {
+        font-size: 18px;
+        margin-top: 50px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 64em) { // Same media query for Pure's "lg" grid.
+  #section1 {
+    background-attachment: fixed;
+
+    .brand {
+      .brand-name {
+        font-size: 85px;
+      }
+
+      .brand-description {
+        font-size: 30px;
+      }
+
+      .brand-contact {
+        font-size: 22px;
       }
     }
   }
