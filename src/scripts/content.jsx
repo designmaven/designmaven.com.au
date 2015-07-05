@@ -27,7 +27,7 @@ export class Content extends React.Component {
     return (
       <div id="content">
         <div className="pure-g">
-          <div className="pure-u-1 pure-u-md-16-24">
+          <div className="pure-u-1 pure-u-md-14-24">
             <div className="heading">ABOUT <b>ME.</b></div>
             <p>My name is Sarah and I’m a freelance Graphic Designer based in Melbourne.</p>
             <p>I describe my design style as minimalist and aesthetically pleasing.</p>
@@ -39,14 +39,14 @@ export class Content extends React.Component {
           <div className="pure-u-1 pure-u-md-2-24">
           </div>
 
-          <div className="pure-u-1 pure-u-md-6-24">
+          <div className="pure-u-1 pure-u-md-8-24">
             <div className="heading">FACE TO A <b>NAME.</b></div>
             <img src="images/sarah1.jpg" className="face" />
           </div>
         </div>
 
         <div className="pure-g">
-          <div className="pure-u-1 pure-u-md-10-24">
+          <div className="pure-u-1 pure-u-md-14-24">
             <div className="heading">YES TO ALL <b>CAPABILITIES.</b></div>
             <div className="pure-g">
               <div className="pure-u-1 pure-u-md-1-3">
@@ -69,10 +69,10 @@ export class Content extends React.Component {
             <p><b>Customised Artwork</b></p>
           </div>
 
-          <div className="pure-u-1 pure-u-md-8-24">
+          <div className="pure-u-1 pure-u-md-2-24">
           </div>
 
-          <div className="pure-u-1 pure-u-md-6-24 pure-g">
+          <div className="pure-u-1 pure-u-md-8-24 pure-g">
             <div className="pure-u-1">
               <div className="heading">COFFEE <b>LOVER.</b></div>
               <div className="pure-g">
