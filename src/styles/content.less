@@ -11,6 +11,7 @@
   }
 
   .quotes {
+    display: none;
     text-align: center;
 
     a {
@@ -38,6 +39,14 @@
 
     &.vector {
       height: 110px;
+    }
+  }
+}
+
+@media screen and (min-width: 48em) { // Same media query for Pure's "md" grid.
+  #content {
+    .quotes {
+      display: inherit;
     }
   }
 }

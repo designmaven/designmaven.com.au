@@ -92,11 +92,11 @@ export class Content extends React.Component {
           </div>
         </div>
 
-        <div className="pure-g">
+        <div className="pure-g quotes">
           <div className="pure-u-1 pure-u-md-4-24">
           </div>
 
-          <div className="pure-u-1 pure-u-md-16-24 quotes">
+          <div className="pure-u-1 pure-u-md-16-24">
             <div className="heading">WORDS OF <b>WISDOM.</b></div>
             <div className="pure-g">
               <div className="pure-u-1 pure-u-md-4-24">
