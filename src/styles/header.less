@@ -31,8 +31,6 @@
         color: white;
         border: 2px solid white;
         border-radius: 20px;
-        -webkit-border-radius: 20px;
-        -moz-border-radius: 20px;
         padding: 15px;
         text-decoration: none;
 
@@ -57,9 +55,6 @@
       left: 50%;
       width: 50%;
       transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
       margin: auto;
 
       .brand-name {
@@ -74,6 +69,77 @@
       .brand-contact {
         font-size: 18px;
         margin-top: 50px;
+      }
+    }
+
+    .see-more {
+      position: absolute;
+      width: 100%;
+      bottom: 50px;
+      text-align: center;
+
+      // Cool mouse scroll animation: http://codepen.io/marctannous/pen/ogLMxy
+      .mouse {
+        width: 3.5em;
+        height: 6em;
+        margin: 5em auto 0px auto;
+        border: 2px solid white;
+        border-radius: 100px;
+
+        .wheel {
+          margin: 1em auto 0 auto;
+          width: 0.75em;
+          height: 0.75em;
+          background-color: white;
+          border-radius: 50%;
+        }
+
+        .scroll {
+          opacity: 0;
+          margin: 0px auto;
+          width: 0px;
+          height: 0px;
+          border-left: 0.35em solid transparent;
+          border-right: 0.35em solid transparent;
+          border-top: 0.4em solid white;
+
+          &.scroll1 {
+            @keyframes scroll1 {
+              60% { opacity: 0; }
+              100% { opacity: 0.2; transform: translateY(2.3em); }
+            }
+
+            animation: scroll1 1s infinite;
+          }
+
+          &.scroll2 {
+            @keyframes scroll2 {
+              40% { opacity: 0; }
+              100% { opacity: 0.5; transform: translateY(2.3em); }
+            }
+
+            animation: scroll2 1s infinite;
+          }
+
+          &.scroll3 {
+            @keyframes scroll3 {
+              0% { opacity: 0; }
+              100% { opacity: 1; transform: translateY(2.3em); }
+            }
+
+            animation: scroll3 1s infinite;
+          }
+        }
+      }
+
+      .text {
+        margin-top: 10px;
+        color: white;
+        font-size: 14px;
+
+        &::after {
+          content: "SCROLL";
+        }
       }
     }
   }

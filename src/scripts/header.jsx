@@ -15,6 +15,21 @@ export class Header extends React.Component {
             <a href="mailto:sarahdesignmaven@gmail.com">CONTACT ME</a>
           </div>
         </div>
+
+        <div className="see-more">
+          <div className="mouse">
+            <div className="wheel">
+            </div>
+            <div className="scroll scroll1">
+            </div>
+            <div className="scroll scroll2">
+            </div>
+            <div className="scroll scroll3">
+            </div>
+          </div>
+          <div className="text">
+          </div>
+        </div>
       </div>
     );
   }
