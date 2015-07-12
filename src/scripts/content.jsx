@@ -29,11 +29,11 @@ export class Content extends React.Component {
         <div className="pure-g">
           <div className="pure-u-1 pure-u-md-14-24">
             <div className="heading">ABOUT <b>ME.</b></div>
-            <p>My name is Sarah and I’m a freelance Graphic Designer based in Melbourne.</p>
+            <p>My name is Sarah Dessmann and I'm a freelance Graphic Designer based in Melbourne.</p>
             <p>I describe my design style as minimalist and aesthetically pleasing.</p>
             <p>In additional to being at the mercy of coffee, working in the Marketing Department of a national corporation gets me out of bed in the mornings.</p>
-            <p>When I’m not in the creative zone, I’m most likely off on an adventure somewhere with my future wife.</p>
-            <p>Let’s chat?</p>
+            <p>When I'm not in the creative zone, I'm most likely off on an adventure somewhere with my future wife.</p>
+            <p>Let's chat?</p>
           </div>
 
           <div className="pure-u-1 pure-u-md-2-24">

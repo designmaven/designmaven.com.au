@@ -12,22 +12,6 @@
 
   .quotes {
     display: none;
-    text-align: center;
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-size: 1.75em;
-    }
-
-    .quote-enter {
-      opacity: 0;
-      transition: opacity .5s ease-in;
-
-      &.quote-enter-active {
-        opacity: 1;
-      }
-    }
   }
 
   img {
@@ -36,7 +20,7 @@
     }
 
     &.vector {
-      height: 110px;
+      height: 100px;
     }
   }
 }
@@ -45,6 +29,22 @@
   #content {
     .quotes {
       display: inherit;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        font-size: 1.75em;
+      }
+
+      .quote-enter {
+        opacity: 0;
+        transition: opacity .5s ease-in;
+
+        &.quote-enter-active {
+          opacity: 1;
+        }
+      }
     }
   }
 }

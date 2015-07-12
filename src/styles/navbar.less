@@ -1,65 +1,18 @@
-@import url("//fonts.googleapis.com/css?family=Titillium+Web:700");
-
 #navbar {
   position: absolute;
-  top: 10px;
-  width: 100%;
-  text-align: center;
+  top: 20px;
+  left: 20px;
 
-  // Fancy social media icons: http://codepen.io/Andr3mo/pen/PwoPXL
-  .facebook, .instagram {
-    font-size: 10px;
-    width: 5em;
-    height: 5em;
-    border: 2px solid white;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
+  a {
+    font-size: 30px;
+    color: white;
 
     &:hover {
       filter: opacity(70%);
     }
-  }
 
-  .facebook + .instagram {
-    margin-left: 10px;
-  }
-
-  .facebook {
-    &::after {
-      content: "f";
-      position: absolute;
-      font-family: "Titillium Web", sans-serif;
-      font-weight: bold;
-      font-size: 4em;
-      margin: -0.15em -0.15em;
-      color: white;
-    }
-  }
-
-  .instagram {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 2.8em;
-      height: 2.8em;
-      border: .3em solid white;
-      border-radius: .5em;
-      margin: 0.8em -1.6em;
-      background: linear-gradient(black, black) no-repeat, linear-gradient(white, white) no-repeat;
-      background-size: 7em .7em, 3em 1.3em;
-      background-position: 2.1em 0, 0 0;
-    }
-
-    &::after {
-      content: "";
-      position: absolute;
-      width: 1em;
-      height: 1em;
-      border: .4em solid white;
-      background-color: black;
-      border-radius: 50%;
-      margin: 1.7em -0.8em;
+    + a {
+      margin-left: 15px;
     }
   }
 }

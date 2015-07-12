@@ -63,12 +63,16 @@ gulp.task("build-styles", () => {
 
 gulp.task("build-misc", () => {
   let imagesFilter = filter("**/*.{ico,gif,jpg,png}");
+  let fontsFilter = filter("**/*.{otf,eot,svg,ttf,woff,woff2}");
 
   return gulp
     .src(config.misc)
     .pipe(imagesFilter)
     .pipe(gulp.dest(`${config.buildDir}/images`))
-    .pipe(imagesFilter.restore());
+    .pipe(imagesFilter.restore())
+    .pipe(fontsFilter)
+    .pipe(gulp.dest(`${config.buildDir}/fonts`))
+    .pipe(fontsFilter.restore());
 });
 
 gulp.task("build-index", () => {
