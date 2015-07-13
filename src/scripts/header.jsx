@@ -15,7 +15,8 @@ export class Header extends React.Component {
 
         <div className="see-more">
           <div className="mouse">
-            // TODO
+            <div className="scrollwheel">
+            </div>
           </div>
         </div>
       </div>

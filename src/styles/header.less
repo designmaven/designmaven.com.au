@@ -55,10 +55,37 @@
       position: absolute;
       width: 100%;
       bottom: 50px;
-      text-align: center;
 
       .mouse {
-        // TODO
+        margin: 0px auto;
+        width: 30px;
+        height: 50px;
+        border: 2px solid white;
+        border-radius: 15px;
+
+        .scrollwheel {
+          position: relative;
+          left: 13px;
+          width: 4px;
+          height: 4px;
+          background-color: white;
+          border-radius: 2px;
+          animation: scrolling 1.2s ease-out infinite;
+
+          @keyframes scrolling {
+            0% {
+              opacity: 1;
+              top: 20px;
+              height: 4px;
+            }
+
+            100% {
+              opacity: 0;
+              top: 8px;
+              height: 8px;
+            }
+          }
+        }
       }
     }
   }
