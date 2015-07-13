@@ -2,6 +2,7 @@ import React from "react/addons";
 import {Navbar} from "./navbar";
 import {Header} from "./header";
 import {Content} from "./content";
+import {Curtains} from "./curtains";
 
 class App extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class App extends React.Component {
         <Navbar />
         <Header />
         <Content />
+        <Curtains />
       </div>
     );
   }
