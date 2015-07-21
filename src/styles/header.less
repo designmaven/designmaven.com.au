@@ -1,18 +1,20 @@
 #header {
-  padding: 100px 0;
+  width: 100%;
+  height: 100%;
   background: url("../images/sarah2.jpg") no-repeat center center;
   background-attachment: scroll;
   background-size: cover;
+  color: white;
 
   .top {
     position: absolute;
-    width: 100%;
     top: 20px;
+    width: 100%;
     text-align: center;
 
     a {
       font-size: 30px;
-      color: white;
+      color: inherit;
 
       &:hover {
         filter: opacity(70%);
@@ -25,68 +27,66 @@
   }
 
   .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     font-size: 40px;
-    font-weight: 300;
-    color: white;
 
-    .emphasised {
+    .weak {
+      font-weight: 300;
+    }
+
+    .strong {
       font-weight: 600;
+    }
+  }
+
+  .bottom {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+
+    .mouse {
+      margin: 0px auto;
+      width: 30px;
+      height: 50px;
+      border: 2px solid white;
+      border-radius: 15px;
+
+      .scrollwheel {
+        position: relative;
+        left: 13px;
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 2px;
+        animation: scrolling 1.2s ease-out infinite;
+
+        @keyframes scrolling {
+          0% {
+            opacity: 1;
+            top: 20px;
+            height: 4px;
+          }
+
+          100% {
+            opacity: 0;
+            top: 8px;
+            height: 8px;
+          }
+        }
+      }
     }
   }
 }
 
 @media screen and (min-width: 48em) { // Same media query for Pure's "md" grid.
   #header {
-    height: 100%;
-    width: 100%;
-    padding: 0;
-
     .middle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 50%;
-      transform: translate(-50%, -50%);
       font-size: 56px;
-    }
-
-    .bottom {
-      position: absolute;
-      width: 100%;
-      bottom: 50px;
-
-      .mouse {
-        margin: 0px auto;
-        width: 30px;
-        height: 50px;
-        border: 2px solid white;
-        border-radius: 15px;
-
-        .scrollwheel {
-          position: relative;
-          left: 13px;
-          width: 4px;
-          height: 4px;
-          background-color: white;
-          border-radius: 2px;
-          animation: scrolling 1.2s ease-out infinite;
-
-          @keyframes scrolling {
-            0% {
-              opacity: 1;
-              top: 20px;
-              height: 4px;
-            }
-
-            100% {
-              opacity: 0;
-              top: 8px;
-              height: 8px;
-            }
-          }
-        }
-      }
     }
   }
 }

@@ -17,7 +17,7 @@ export class Header extends React.Component {
         </div>
 
         <div className="middle">
-          design<span className="emphasised">maven.</span>
+          <span className="weak">design</span><span className="strong">maven.</span>
         </div>
 
         <div className="bottom">
