@@ -9,10 +9,10 @@ export class Curtains extends React.Component {
 
   render() {
     return (
-      <div id="curtains">
-        <div className={`curtain curtain-left ${this.state.opened ? "curtain-opened" : ""}`}>
+      <div id="curtains" className={this.state.opened ? "opened" : ""}>
+        <div className="curtain">
         </div>
-        <div className={`curtain curtain-right ${this.state.opened ? "curtain-opened" : ""}`}>
+        <div className="curtain">
         </div>
       </div>
     );
