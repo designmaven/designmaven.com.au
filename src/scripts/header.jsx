@@ -16,13 +16,8 @@ export class Header extends React.Component {
           </a>
         </div>
 
-        <div className="brand">
-          <div className="brand-name">
-            design<span className="emphasised">maven.</span>
-          </div>
-          <div className="brand-description">
-            MELBOURNE-BASED GRAPHIC DESIGNER
-          </div>
+        <div className="middle">
+          design<span className="emphasised">maven.</span>
         </div>
 
         <div className="bottom">
