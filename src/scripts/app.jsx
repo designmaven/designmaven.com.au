@@ -1,5 +1,4 @@
 import React from "react/addons";
-import {Navbar} from "./navbar";
 import {Header} from "./header";
 import {Content} from "./content";
 import {Curtains} from "./curtains";
@@ -8,10 +7,9 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
-        <Navbar />
+        <Curtains />
         <Header />
         <Content />
-        <Curtains />
       </div>
     );
   }

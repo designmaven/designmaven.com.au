@@ -4,6 +4,26 @@
   background-attachment: scroll;
   background-size: cover;
 
+  .top {
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    text-align: center;
+
+    a {
+      font-size: 30px;
+      color: white;
+
+      &:hover {
+        filter: opacity(70%);
+      }
+
+      + a {
+        margin-left: 15px;
+      }
+    }
+  }
+
   .brand {
     position: relative;
     color: white;
@@ -51,7 +71,7 @@
       }
     }
 
-    .see-more {
+    .bottom {
       position: absolute;
       width: 100%;
       bottom: 50px;
