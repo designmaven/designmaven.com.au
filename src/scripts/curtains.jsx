@@ -22,7 +22,7 @@ export class Curtains extends React.Component {
     // Load the header's huge background image first, so that when
     // the curtains are opened completely, it's not still loading.
     let headerImage = new Image();
-    headerImage.src = "images/sarah2.jpg";
+    headerImage.src = "images/header-bg.jpg";
     headerImage.onload = () => setTimeout(() => this.setState({ opened: true }), 2000);
   }
 }
