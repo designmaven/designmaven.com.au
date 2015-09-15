@@ -32,7 +32,7 @@ export class Content extends React.Component {
             <p>My name is Sarah Dessmann and I'm a freelance Graphic Designer based in Melbourne.</p>
             <p>I describe my design style as minimalist and aesthetically pleasing.</p>
             <p>In addition to being at the mercy of coffee, working in the Marketing Department of a national corporation gets me out of bed in the mornings.</p>
-            <p>When I'm not in the creative zone, I'm most likely off on an adventure somewhere with my future wife.</p>
+            <p>When I'm not in the creative zone, I'm most likely off on an adventure somewhere with my wife.</p>
             <p>Let's chat?</p>
           </div>
 
