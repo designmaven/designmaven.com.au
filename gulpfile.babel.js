@@ -1,26 +1,46 @@
 import gulp from "gulp";
 import gutil from "gulp-util";
-import gulpif from "gulp-if";
 import filter from "gulp-filter";
 import inject from "gulp-inject";
 import livereload from "gulp-livereload";
 import uglify from "gulp-uglify";
-import minifyCSS from "gulp-minify-css";
-import less from "gulp-less";
+import cleanCSS from "gulp-clean-css";
+import sass from "gulp-sass";
 import autoprefixer from "gulp-autoprefixer";
 import rename from "gulp-rename";
 import rev from "gulp-rev";
 import watch from "gulp-watch";
-import plumber from "gulp-plumber";
+import gulpif from "gulp-if";
 import browserify from "browserify";
 import babelify from "babelify";
+import rememberify from "rememberify";
 import source from "vinyl-source-stream";
 import buffer from "vinyl-buffer";
 import del from "del";
 import runSequence from "run-sequence";
+import getWantedDependencies from "get-wanted-dependencies";
 import express from "express";
 import http from "http";
-import config from "./gulpconfig";
+
+let config = {
+  serverPort: 9000,
+  sourceDir: "src",
+  buildDir: "dist",
+  index: "src/index.html",
+  script: "src/scripts/index.jsx",
+  style: "src/styles/index.scss",
+  misc: [
+    "node_modules/font-awesome/fonts/**/*.{otf,eot,svg,ttf,woff,woff2}",
+    "src/images/**/*.{ico,gif,jpg,png}"
+  ],
+  environments: [{
+    name: "development",
+    minify: false
+  }, {
+    name: "production",
+    minify: true
+  }]
+};
 
 let server = http.createServer(express().use(express.static(config.buildDir)));
 let env = config.environments.find(e => e.name === (process.env.NODE_ENV || "development"));
@@ -30,9 +50,30 @@ if (env) {
   throw new Error("Unsupported environment specified.");
 }
 
+let bundler = browserify({
+  entries: `./${config.script}`,
+  extensions: [".jsx"],
+  cache: {}
+}).transform(babelify).plugin(rememberify);
+
+gulp.task("clean", done => {
+  del(config.buildDir).then(() => done()).catch(err => done(err));
+});
+
+gulp.task("check-dependencies", done => {
+  getWantedDependencies(__dirname).then(wantedDependencies => {
+    if (wantedDependencies.length > 0) {
+      gutil.log(gutil.colors.red("Wanted dependencies not installed. Run `npm install`."));
+      gutil.beep();
+      process.exit(1);
+    }
+
+    done();
+  }).catch(err => done(err));
+});
+
 gulp.task("build-scripts", () => {
-  return browserify({ entries: `./${config.script}`, extensions: [".jsx"] })
-    .transform(babelify.configure({ optional: ["es7.classProperties", "es7.decorators"] }))
+  return bundler
     .bundle()
     .on("error", function(err) {
       gutil.log(gutil.colors.red(err.message));
@@ -49,14 +90,14 @@ gulp.task("build-scripts", () => {
 gulp.task("build-styles", () => {
   return gulp
     .src(config.style)
-    .pipe(plumber(err => {
-      gutil.log(gutil.colors.red(err.message));
+    .pipe(sass().on("error", function(err) {
+      gutil.log(gutil.colors.red(err.messageFormatted));
       gutil.beep();
+      this.emit("end");
     }))
-    .pipe(less())
     .pipe(rename(`${env.name}.css`))
     .pipe(autoprefixer({ browsers: ["> 1%"] }))
-    .pipe(gulpif(env.minify, minifyCSS()))
+    .pipe(gulpif(env.minify, cleanCSS()))
     .pipe(rev())
     .pipe(gulp.dest(`${config.buildDir}/styles`));
 });
@@ -78,21 +119,15 @@ gulp.task("build-misc", () => {
 gulp.task("build-index", () => {
   return gulp
     .src(config.index)
-    .pipe(
-      inject(
-        gulp.src([`${config.buildDir}/**/*.css`, `${config.buildDir}/**/*.js`], { read: false }),
-        { ignorePath: config.buildDir, addRootSlash: false, removeTags: true, quiet: true }
-      )
-    )
+    .pipe(inject(
+      gulp.src(`${config.buildDir}/**/*.{js,css}`, { read: false }),
+      { ignorePath: config.buildDir, addRootSlash: false, removeTags: true, quiet: true }
+    ))
     .pipe(gulp.dest(config.buildDir));
 });
 
-gulp.task("clean", done => {
-  del(config.buildDir, done);
-});
-
 gulp.task("build", ["clean"], done => {
-  runSequence("build-scripts", "build-styles", "build-misc", "build-index", done);
+  runSequence(["check-dependencies", "build-scripts", "build-styles", "build-misc"], "build-index", done);
 });
 
 gulp.task("serve", ["build"], done => {
@@ -107,7 +142,12 @@ gulp.task("reload", () => {
 });
 
 gulp.task("watch", ["serve", "reload"], () => {
-  return watch(`${config.sourceDir}/**/*`, () => { runSequence("build", "reload") });
+  return watch(`${config.sourceDir}/**/*`, file => {
+    // A file was changed! Purge it from the Browserify cache.
+    rememberify.forget(bundler, file.path);
+
+    runSequence("build", "reload");
+  });
 });
 
 gulp.task("default", ["build"]);

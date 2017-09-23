@@ -1,26 +1,27 @@
-import React from "react/addons";
+import React from "react";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
-const ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-
-export class Content extends React.Component {
-  static QUOTES = [{
-    text: "Creativity is intelligence having fun.",
-    credit: "Albert Einstein"
-  }, {
-    text: "Make it simple. But significant.",
-    credit: "Don Draper"
-  }, {
-    text: "Good design is as little design as possible.",
-    credit: "Dieter Rams"
-  }, {
-    text: "The first draft of anything is shit.",
-    credit: "Ernest Hemingway"
-  }]
-
+export default class extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { quoteIndex: 0, quoteChangeEnabled: true };
+    this.state = {
+      quoteIndex: 0,
+      quoteChangeEnabled: true
+    };
+    this.quotes = [{
+      text: "Creativity is intelligence having fun.",
+      credit: "Albert Einstein"
+    }, {
+      text: "Make it simple. But significant.",
+      credit: "Don Draper"
+    }, {
+      text: "Good design is as little design as possible.",
+      credit: "Dieter Rams"
+    }, {
+      text: "The first draft of anything is shit.",
+      credit: "Ernest Hemingway"
+    }];
   }
 
   render() {
@@ -103,10 +104,10 @@ export class Content extends React.Component {
               </div>
 
               <div className="pure-u-1 pure-u-md-16-24">
-                <ReactCSSTransitionGroup transitionName="quote" transitionLeave={false}>
+                <ReactCSSTransitionGroup transitionName="quote" transitionEnterTimeout={500} transitionLeave={false}>
                   <div key={this.state.quoteIndex}>
-                    <p>{Content.QUOTES[this.state.quoteIndex].text}</p>
-                    <p>{Content.QUOTES[this.state.quoteIndex].credit}</p>
+                    <p>{this.quotes[this.state.quoteIndex].text}</p>
+                    <p>{this.quotes[this.state.quoteIndex].credit}</p>
                   </div>
                 </ReactCSSTransitionGroup>
               </div>
@@ -131,8 +132,8 @@ export class Content extends React.Component {
     }
   }
 
-  handleQuoteChange(type, evt) {
-    evt.preventDefault(); // Don't follow link.
+  handleQuoteChange(type, event) {
+    event.preventDefault(); // Don't follow link.
 
     if (!this.state.quoteChangeEnabled) {
       return;
@@ -140,8 +141,8 @@ export class Content extends React.Component {
 
     let quoteIndex = (() => {
       switch (type) {
-        case "previous": return this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : Content.QUOTES.length - 1;
-        case "next": return this.state.quoteIndex < Content.QUOTES.length - 1 ? this.state.quoteIndex + 1 : 0;
+        case "previous": return this.state.quoteIndex > 0 ? this.state.quoteIndex - 1 : this.quotes.length - 1;
+        case "next": return this.state.quoteIndex < this.quotes.length - 1 ? this.state.quoteIndex + 1 : 0;
       }
     })();
 

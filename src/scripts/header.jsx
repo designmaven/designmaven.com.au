@@ -1,14 +1,14 @@
-import React from "react/addons";
+import React from "react";
 
-export class Header extends React.Component {
+export default class extends React.Component {
   render() {
     return (
       <div id="header">
         <div className="top">
-          <a href="//facebook.com/sarahdesignmaven" target="_blank">
+          <a href="https://facebook.com/sarahdesignmaven" target="_blank">
             <i className="fa fa-facebook-square"></i>
           </a>
-          <a href="//instagram.com/design.maven" target="_blank">
+          <a href="https://instagram.com/design.maven" target="_blank">
             <i className="fa fa-instagram"></i>
           </a>
           <a href="mailto:sarahdesignmaven@gmail.com" target="_blank">
