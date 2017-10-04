@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/gulp watch"
+    "build": "NODE_ENV=production ./node_modules/.bin/gulp build",
+    "develop": "./node_modules/.bin/gulp watch"
   },
   "dependencies": {
     "font-awesome": "4.7.0",
